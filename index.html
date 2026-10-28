@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#39393b",
+                        "tertiary": "#ffb2b8",
+                        "surface-container-low": "#1c1b1d",
+                        "primary": "#e8b3ff",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary-fixed-variant": "#91002d",
+                        "surface-dim": "#131315",
+                        "inverse-on-surface": "#313032",
+                        "on-tertiary": "#67001d",
+                        "tertiary-fixed": "#ffdadb",
+                        "secondary-fixed": "#7df4ff",
+                        "on-primary": "#500074",
+                        "surface": "#131315",
+                        "on-tertiary-container": "#5b0018",
+                        "inverse-surface": "#e5e1e4",
+                        "primary-fixed": "#f6d9ff",
+                        "tertiary-fixed-dim": "#ffb2b8",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-container": "#201f21",
+                        "on-primary-fixed-variant": "#7200a3",
+                        "on-secondary-fixed": "#002022",
+                        "on-error": "#690005",
+                        "surface-variant": "#353437",
+                        "secondary-container": "#00eefc",
+                        "on-tertiary-fixed": "#40000f",
+                        "outline-variant": "#4f4254",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "on-secondary": "#00363a",
+                        "secondary": "#d3fbff",
+                        "on-background": "#e5e1e4",
+                        "surface-tint": "#e8b3ff",
+                        "surface-container-high": "#2a2a2c",
+                        "primary-container": "#c960ff",
+                        "on-surface-variant": "#d3c1d6",
+                        "on-surface": "#e5e1e4",
+                        "on-primary-fixed": "#310049",
+                        "tertiary-container": "#ff506e",
+                        "secondary-fixed-dim": "#00dbe9",
+                        "outline": "#9c8ba0",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#00686f",
+                        "primary-fixed-dim": "#e8b3ff",
+                        "on-primary-container": "#460066",
+                        "inverse-primary": "#9600d4",
+                        "background": "#131315",
+                        "error-container": "#93000a"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Space Grotesk"],
+                        "label-sm": ["Space Grotesk"],
+                        "label-md": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(191, 64, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px -3px rgba(191, 64, 255, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #BF40FF;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 selection:bg-primary-container selection:text-white">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_-10px_rgba(191,64,255,0.5)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#BF40FF] cursor-pointer active:scale-95 duration-200">menu</span>
+<span class="text-xl font-black text-[#BF40FF] italic tracking-tighter font-space-grotesk">NEO_MANGA</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center font-space-grotesk tracking-tight">
+<span class="text-zinc-500 hover:text-[#BF40FF] hover:bg-white/5 px-3 py-1 rounded transition-colors cursor-pointer">Library</span>
+<span class="text-[#BF40FF] font-bold px-3 py-1 rounded bg-white/5 transition-colors cursor-pointer">Search</span>
+<span class="text-zinc-500 hover:text-[#BF40FF] hover:bg-white/5 px-3 py-1 rounded transition-colors cursor-pointer">Hot Releases</span>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-[#BF40FF] p-0.5 overflow-hidden active:scale-95 duration-200">
+<img alt="User Profile" class="w-full h-full object-cover rounded-full" data-alt="Cyberpunk style character portrait with glowing neon accents and high-tech visor, digital art illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyT7Gv-DFywztjwDtMBgKZQGBeDoLeqQg-P43d_lQZx9-c-ZHfsb4zNmXV1mE4b4p7I2W4XaHgyeLwuXUJsWDOtSZwqwXOfIQ-nUXrX-lOkoT7tHsjyslVfT7De4xB3I16BCm4tHtO5Q6iM6MLG5Gw1gLQcMpehn0F25W3p-B5EduEk0zHJbxQRWT4hAOZLV9lBSGso1u1AYbqIQZN84RchpUvAdd2W8y3N2F_EwUdXGZt3TxlnhQYwLoaGiZTCK1BsXK1GLS5qJ-L"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-4 md:px-margin max-w-7xl mx-auto">
+<!-- Hero Search Section -->
+<div class="mb-12">
+<h1 class="font-headline-xl text-[#BF40FF] mb-4 flex items-center gap-4">
+<span class="material-symbols-outlined text-5xl">manage_search</span>
+                ค้นหาขั้นสูง
+            </h1>
+<p class="text-zinc-400 font-body-lg max-w-2xl">ดำดิ่งสู่โลกแห่งมังงะ ค้นหาสิ่งที่คุณต้องการด้วยตัวกรองที่แม่นยำที่สุดในจักรวาลดิจิทัล</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Filter Sidebar (Bento Style) -->
+<aside class="lg:col-span-4 flex flex-col gap-sm">
+<!-- Search Bar Card -->
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md">
+<label class="text-[#BF40FF] font-label-md uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">search</span> คำที่ต้องการค้นหา
+                    </label>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border-b-2 border-zinc-800 focus:border-[#BF40FF] outline-none py-4 px-2 text-on-surface font-body-lg transition-all" placeholder="ชื่อเรื่อง, ผู้แต่ง, หรือคำสำคัญ..." type="text"/>
+<div class="absolute bottom-0 left-0 h-0.5 w-0 group-focus-within:w-full bg-[#BF40FF] transition-all duration-500"></div>
+</div>
+</div>
+<!-- Genre Bento Grid -->
+<div class="glass-panel p-lg rounded-xl">
+<label class="text-[#BF40FF] font-label-md uppercase tracking-widest mb-md block">หมวดหมู่มังงะ</label>
+<div class="grid grid-cols-2 gap-xs">
+<button class="bg-[#BF40FF]/20 text-[#BF40FF] border border-[#BF40FF]/40 py-2 px-4 rounded font-label-sm hover:bg-[#BF40FF]/30 transition-all text-left">Action</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Sci-fi</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Fantasy</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Horror</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Romance</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Slice of Life</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Seinen</button>
+<button class="bg-surface-container-highest/30 text-zinc-400 border border-white/5 py-2 px-4 rounded font-label-sm hover:border-[#BF40FF]/40 transition-all text-left">Shonen</button>
+</div>
+</div>
+<!-- Status & Sort -->
+<div class="glass-panel p-lg rounded-xl flex flex-col gap-md">
+<div>
+<label class="text-zinc-500 font-label-md uppercase tracking-widest mb-sm block">สถานะการแปล</label>
+<select class="w-full bg-surface-container-lowest border border-white/5 rounded-lg py-3 px-4 outline-none focus:border-[#BF40FF] transition-all appearance-none text-on-surface">
+<option>ทั้งหมด</option>
+<option>กำลังดำเนินการ</option>
+<option>จบแล้ว</option>
+<option>หยุดพัก</option>
+</select>
+</div>
+<div>
+<label class="text-zinc-500 font-label-md uppercase tracking-widest mb-sm block">เรียงตาม</label>
+<select class="w-full bg-surface-container-lowest border border-white/5 rounded-lg py-3 px-4 outline-none focus:border-[#BF40FF] transition-all appearance-none text-on-surface">
+<option>ยอดนิยมตลอดกาล</option>
+<option>อัปเดตล่าสุด</option>
+<option>เรื่องใหม่</option>
+<option>คะแนนสูงสุด</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-[#BF40FF] text-white font-headline-md py-4 rounded-xl shadow-[0_0_30px_rgba(191,64,255,0.4)] active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">filter_alt</span>
+                    ค้นหามังงะ
+                </button>
+</aside>
+<!-- Search Results -->
+<div class="lg:col-span-8">
+<div class="flex justify-between items-center mb-md px-2">
+<p class="text-zinc-500">พบ <span class="text-[#BF40FF] font-bold">142</span> เรื่องในหมวด "Action"</p>
+<div class="flex gap-2">
+<button class="p-2 glass-panel rounded text-[#BF40FF]"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 glass-panel rounded text-zinc-600"><span class="material-symbols-outlined">format_list_bulleted</span></button>
+</div>
+</div>
+<!-- Manga Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-md">
+<!-- Manga Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Futuristic manga cover illustration featuring a cybernetic samurai against a neon-drenched Tokyo skyline at night, purple and blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsqYJfSTuRRqSWHW3-x6QRH7XWAK6r1Prsl9VCu6PDSkw_3D-OBB6TaM2dJRF7pWaSKjMlrXGJmqPY32YWEDH9GH1aFNeJbUBF4_KJwlLecVugwJOKGCpnRcaMqmQvlhgURGCm1wtXWJnOPPVfteoXyAGZEURtTfBQHhjl5_ObI7g19C5uLXK_nH8J6HPOuU0tEfdFSYQ5c5ZBHcKMXV76qDRnpp-Chej5IW51aZb5teuH8BFeAIB0uZewnoAFfzXtl3AblWLMYjAX"/>
+<div class="absolute top-2 left-2 bg-[#BF40FF] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-tighter uppercase">Hot</div>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+</div>
+<h3 class="text-on-surface font-headline-md truncate group-hover:text-[#BF40FF] transition-colors">Neo Samurai VIII</h3>
+<p class="text-zinc-500 text-sm">Action, Cyberpunk</p>
+</div>
+<!-- Manga Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Sci-fi manga art showing a giant mech suit being repaired in a dark high-tech hangar, sparks flying and blue energy glows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwAz924ssTRXt0gp_WU1174_CA7hphavUoiB2CN3ZmfttwkfS9IezWBc2qk_QxmKmUbF064OHDe8E2gxlZgx5BtIg3CEWKpouZ1Y6YXb6iZXmziR7r_AEm07lwkWLbBWhoZRbVQS6BsMYuNLMTmGcWK4raiu0u8WNqPVPeSaYJ8BIi8tqyLAuTx7PirrQ33MoLe7KlgI8YqgIJKiT-pPDJRip7n3YMTS0Aib3l2tH7QfL3APQ_ofjYmX7Nqu3zPFLZ1wspdVt2oTzA"/>
+<div class="absolute top-2 right-2 glass-panel px-2 py-0.5 rounded text-[10px] text-zinc-300">Ch. 124</div>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.7</span>
+</div>
+</div>
+</div>
+<h3 class="text-on-surface font-headline-md truncate group-hover:text-[#BF40FF] transition-colors">Void Breaker</h3>
+<p class="text-zinc-500 text-sm">Sci-fi, Mecha</p>
+</div>
+<!-- Manga Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Fantasy manga cover with a young wizard casting a powerful neon purple spell in a dark enchanted forest, magical particles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhxlub8Yx55kyw1ZeR65xdupwNm2IJtrVWfJKYbSOgbK5k5PkAvzsIckw4ocRabJjiEpGJtU10Uy57eid4pchq3uwkj3MF1ssHx3sdU41N-1BtU_fgSON10cTH4luwsX2CRkMt66m6Vd80m7KstDldJccrpeZnIpZqv6A-WnqLshymWA_Lvqwh5Cr38lbEMnXyx-Sj0DIwWgkRI0oDdzWISDnuBDgUvCSPRsYv4X8VkbBvVeEs2ClH4TyduMozLS3jFr9ve1ju8l5D"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.8</span>
+</div>
+</div>
+</div>
+<h3 class="text-on-surface font-headline-md truncate group-hover:text-[#BF40FF] transition-colors">Shadow Caster</h3>
+<p class="text-zinc-500 text-sm">Fantasy, Magic</p>
+</div>
+<!-- Manga Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Dark horror manga scene with a ghostly figure appearing in a static-filled computer monitor, glitch art aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjk_L2k8dpSQC08mZzrFWiWEznOKl1aDau2FwfZwy-61F_M5RwdxMQo_z4xuIOeq_QB5My-ufaeB4ZOiEtcsN05j0QHdl374YfS4mlCRVgtwvSHdWDeuEGU0nhIrR13anPYR6EawYokn-62Yzi43J853SLA8lhQIMiILTooWDnKwD55IZi0LLY4GEedYVvCNUPqLQiEOEwyhhIlhobwhCFwRMXddk2IMKf6UzpYxlFunDuixZUSYWcW6FtdShWQ7vmxW0h4uquEynh"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.5</span>
+</div>
+</div>
+</div>
+<h3 class="text-on-surface font-headline-md truncate group-hover:text-[#BF40FF] transition-colors">Ghost Protocol</h3>
+<p class="text-zinc-500 text-sm">Horror, Psychological</p>
+</div>
+<!-- Manga Card 5 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Slice of life manga illustration of two high school students standing on a rooftop at sunset, purple and orange sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPvuPt6fzyv48MLu17fwlcjaHOwL2PKO0ux6g0KHJWmpkpvG61_2IDUWfLb-D41GZprA3if59h8NfV0nLGqz-KcyhYFssb7eTFzHwSVvx6lUCm97VL4SnPQC_qwlBItHg2QBDSlGDKQShzHZJVuYEN2-XxF70crYOdNHKrgQFOrNH321-WMM7jRUlwT1DX1ThVM-cADIqKg7dmo-wsSYFZwq1luX1AMDLDMJ8n1U1LWUND_xRj8ZqqVs0aXf34x4zSqXJx2frUq2N-"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+</div>
+<h3 class="text-on-surface font-headline-md truncate group-hover:text-[#BF40FF] transition-colors">After Hours</h3>
+<p class="text-zinc-500 text-sm">Slice of Life, Seinen</p>
+</div>
+<!-- Manga Card 6 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg aspect-[3/4] mb-sm transition-all group-hover:scale-[1.02] group-hover:shadow-[0_0_20px_rgba(191,64,255,0.3)] border border-transparent group-hover:border-[#BF40FF]/50">
+<img class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" data-alt="Detailed manga portrait of a cyborg girl with glowing purple circuits on her face, dark metallic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWIRvtsUAiY1GI3I79P58lEWmZ0rno_Bys4emt-dnTlL-UIzGqKfbKzyeMrzpLUuf3XeMs27oABcUM-gE1xnPuZKjZBugIxmQS3s9V2DA9zwLedjaZI9jzQLXemI2lO3zHqi2__-TFDsGnIQwY4U-INKxj6ZtE4TGIMH0saQvW_GmI1p6AU0WeFE2GL4WEU-gyuCqsmIm8L7burLUuQ03YIofHypPXJ5M4-Tort4l47n6ncaIQUVxcgxwo9Fss7zEIiOmTGJ2tvOv6"/>
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+<div class="flex items-center gap-1 text-[#BF40FF]">
+<span class="material-symbols-outlined text-sm" sty
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#39393b",
+                    "tertiary": "#ffb2b8",
+                    "surface-container-low": "#1c1b1d",
+                    "primary": "#e8b3ff",
+                    "surface-container-highest": "#353437",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "surface-dim": "#131315",
+                    "inverse-on-surface": "#313032",
+                    "on-tertiary": "#67001d",
+                    "tertiary-fixed": "#ffdadb",
+                    "secondary-fixed": "#7df4ff",
+                    "on-primary": "#500074",
+                    "surface": "#131315",
+                    "on-tertiary-container": "#5b0018",
+                    "inverse-surface": "#e5e1e4",
+                    "primary-fixed": "#f6d9ff",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "on-secondary-fixed": "#002022",
+                    "on-error": "#690005",
+                    "surface-variant": "#353437",
+                    "secondary-container": "#00eefc",
+                    "on-tertiary-fixed": "#40000f",
+                    "outline-variant": "#4f4254",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "on-secondary": "#00363a",
+                    "secondary": "#d3fbff",
+                    "on-background": "#e5e1e4",
+                    "surface-tint": "#e8b3ff",
+                    "surface-container-high": "#2a2a2c",
+                    "primary-container": "#c960ff",
+                    "on-surface-variant": "#d3c1d6",
+                    "on-surface": "#e5e1e4",
+                    "on-primary-fixed": "#310049",
+                    "tertiary-container": "#ff506e",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "outline": "#9c8ba0",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#00686f",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "on-primary-container": "#460066",
+                    "inverse-primary": "#9600d4",
+                    "background": "#131315",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "2.5rem",
+                    "sm": "0.5rem",
+                    "margin": "2rem",
+                    "xs": "0.25rem",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "gutter": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(191, 64, 255, 0.15);
+        }
+        .neo-glow {
+            box-shadow: 0 0 15px -5px rgba(191, 64, 255, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary/30 selection:text-primary">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_-10px_rgba(191,64,255,0.5)]">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 text-[#BF40FF] transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-space-grotesk tracking-tight text-xl font-black text-[#BF40FF] italic tracking-tighter">NEO_MANGA</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-6">
+<a class="font-space-grotesk text-label-md text-[#BF40FF] font-bold" href="#">แจ้งเตือน</a>
+<a class="font-space-grotesk text-label-md text-zinc-500 hover:text-[#BF40FF] transition-colors" href="#">ห้องสมุด</a>
+<a class="font-space-grotesk text-label-md text-zinc-500 hover:text-[#BF40FF] transition-colors" href="#">สำรวจ</a>
+</div>
+<div class="w-8 h-8 rounded-full border border-[#BF40FF]/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up profile portrait of a stylish young man with neon purple lighting in a futuristic urban setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJQK1p2R0w-fRquesUJ98qoqQqdxUT88U5fpHsS42svVD5ePtLVVlJDSeSDYz-2lmt9wlyimAhwagXgAqJUdfEI0hkj9QCl_QMNTtY1mLXBfbP8ganDHzCs8tOuAbBfmX0ovv-2dd8NP7PhbSO9OOQ1zFkRpaGLfQv0Mlm30xOLx1BLx_VhgF0PiONWjP9F2DZZ9szzuNH7iwKKlZsfHldflDSjXmnOBxvkNCWsXsnt4wmiN9ZtOXFQAECGY2lVENBpzVpHSluq1rp"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-4 max-w-3xl mx-auto min-h-screen">
+<!-- Header & Filter -->
+<header class="mb-8 flex justify-between items-end">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-white mb-1">ศูนย์การแจ้งเตือน</h2>
+<p class="text-zinc-500 font-label-md">อัปเดตล่าสุดจากมังงะที่คุณติดตาม</p>
+</div>
+<button class="bg-surface-container-high p-2 rounded-lg text-[#BF40FF] hover:bg-[#BF40FF]/10 transition-all active:scale-90">
+<span class="material-symbols-outlined">done_all</span>
+</button>
+</header>
+<!-- Notification Feed -->
+<div class="space-y-10">
+<!-- Category: Today -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<span class="w-2 h-2 rounded-full bg-[#BF40FF] neo-glow"></span>
+<h3 class="text-label-md font-label-md text-primary tracking-[0.2em] uppercase">วันนี้</h3>
+</div>
+<div class="space-y-3">
+<!-- Notification Item 1 (Manga Update) -->
+<div class="glass-panel p-4 rounded-xl flex gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="relative flex-shrink-0 w-16 h-20 rounded overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="manga cover illustration featuring a cyber-punk protagonist with glowing eyes and futuristic gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgqxs7sE-i4u8_8y0D3vgm12uVzLLJEntwn-3TctLjo3IcCtB92cNU63Iwgcp1wvOpL_ETVIB1MCTcm_81A1iQb0cGnS9Ay8M7azwyzQWJgVgt7qoSWPX00SjtnLd_enS7iCM3fVN5ud6TMiBxO0SGqx1Q30TLtP53-t-MEjdk4GJe8RDlVhtESWVYeaO1rujYLjb7Y6vYJMoMo7_vSJYVK9Va_wh_iCgQvAu-jSG_XVz-AzDCIDKbv7eVj07UIucJVmYgqgVoJAp8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] to-transparent opacity-60"></div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<span class="bg-[#BF40FF]/10 text-[#BF40FF] text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">ตอนใหม่ล่าสุด</span>
+<span class="text-zinc-600 text-[11px] font-label-sm">2 ชม. ที่แล้ว</span>
+</div>
+<h4 class="text-white font-headline-md text-[18px] leading-tight mb-1">Cyber Resonance: ขีดจำกัดมรณะ</h4>
+<p class="text-zinc-400 text-body-md text-sm">ตอนที่ 142: "รหัสลับจากความทรงจำ" พร้อมให้อ่านแล้วตอนนี้!</p>
+</div>
+</div>
+<!-- Notification Item 2 (System Alert) -->
+<div class="glass-panel p-4 rounded-xl flex gap-4 hover:bg-white/5 transition-colors cursor-pointer border-l-4 border-l-[#BF40FF]">
+<div class="w-12 h-12 rounded-lg bg-[#BF40FF]/20 flex items-center justify-center text-[#BF40FF] flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<span class="text-primary text-label-sm">สิทธิประโยชน์สมาชิก</span>
+<span class="text-zinc-600 text-[11px] font-label-sm">5 ชม. ที่แล้ว</span>
+</div>
+<h4 class="text-white font-bold text-md mb-1">อัปเกรดระดับสมาชิกสำเร็จ!</h4>
+<p class="text-zinc-400 text-sm">คุณได้เลื่อนระดับเป็น Premium Member เลเวล 42 รับคูปองอ่านฟรี 5 ใบ</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Yesterday -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<span class="w-2 h-2 rounded-full bg-zinc-700"></span>
+<h3 class="text-label-md font-label-md text-zinc-500 tracking-[0.2em] uppercase">เมื่อวาน</h3>
+</div>
+<div class="space-y-3">
+<!-- Notification Item 3 (New Series) -->
+<div class="glass-panel p-4 rounded-xl flex gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="relative flex-shrink-0 w-16 h-20 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="dramatic manga art style depicting a dark fantasy warrior in a moonlit forest with blue energy effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvhtkFnBQXna0Jw_3ZhAPRxKZEJTEwBZ4m86g6Fc_5XC1UZQuE5oLxvO7u7cCgM-nzUdaA2qp0x5aA1cpVKEGxDYWeNySv08IUEO5NIx0Jz1nvQobkUgnZO9VWi_u9tWOIQ5RYyvh_4xaXsvPuFWMahIvGzL_UPZDxBtSZntuGX7nfyBgU1z46WNWEEiHBGhUErWkknDYQkbReEiu-VWvduS9C9gZt9HuFtew8VObB3eOvQzSCAzzJXqaJC1aKG0W4pqcA17HNLgHZ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<span class="bg-secondary-container/10 text-secondary-container text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">ซีรีส์ใหม่</span>
+<span class="text-zinc-600 text-[11px] font-label-sm">เมื่อวาน 18:30</span>
+</div>
+<h4 class="text-white font-bold text-md mb-1">จอมดาบแห่งนิกายทมิฬ</h4>
+<p class="text-zinc-400 text-sm">มังงะแนวดาร์กแฟนตาซีเรื่องใหม่ที่คุณอาจสนใจ เริ่มตอนที่ 1-3 ได้แล้ว</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: This Week -->
+<section>
+<div class="flex items-center gap-3 mb-4">
+<span class="w-2 h-2 rounded-full bg-zinc-700"></span>
+<h3 class="text-label-md font-label-md text-zinc-500 tracking-[0.2em] uppercase">สัปดาห์นี้</h3>
+</div>
+<div class="space-y-3">
+<!-- Notification Item 4 (Achievement) -->
+<div class="glass-panel p-4 rounded-xl flex gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary-container flex-shrink-0">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<span class="text-tertiary text-label-sm">ความสำเร็จ</span>
+<span class="text-zinc-600 text-[11px] font-label-sm">2 วันก่อน</span>
+</div>
+<h4 class="text-white font-bold text-md mb-1">นักอ่านตัวยง: ระดับ 1</h4>
+<p class="text-zinc-400 text-sm">ยินดีด้วย! คุณอ่านมังงะครบ 1,000 หน้าในสัปดาห์นี้</p>
+</div>
+</div>
+<!-- Notification Item 5 (System Update) -->
+<div class="glass-panel p-4 rounded-xl flex gap-4 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-zinc-400 flex-shrink-0">
+<span class="material-symbols-outlined">update</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<span class="text-zinc-500 text-label-sm">ระบบ</span>
+<span class="text-zinc-600 text-[11px] font-label-sm">3 วันก่อน</span>
+</div>
+<h4 class="text-white font-bold text-md mb-1">อัปเดตแอปเวอร์ชัน 4.2.0</h4>
+<p class="text-zinc-400 text-sm">เพิ่มโหมด "Focus Reader" และปรับปรุงความเร็วการโหลดภาพให้ดีขึ้น</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-xl shadow-primary/20 z-[55] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_comment</span>
+</button>
+<!-- Navigation Drawer (Contextual/Sidebar Logic) -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex flex-col p-4 h-full w-72 rounded-r-lg border-r border-[#BF40FF]/20 bg-[#0A0A0C]/95 backdrop-blur-2xl shadow-2xl shadow-black transition-all duration-300">
+<div class="flex items-center gap-3 px-2 py-6 border-b border-white/5 mb-6">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#BF40FF] to-secondary-container p-0.5">
+<div class="w-full h-full rounded-[10px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="futuristic profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4klA1PmczgP--wg0eOTeXD8v0xjz_ObV6Fv6yXqe8NZ8wZiebOwYAFDhzvh5vnnkLShL1UD7wNV5s-oP7ls79l_BK4pivvWQMsKk1yejTAuiSKf9kYIk5uVOHYmnFClRAzkxccZ9LM2iN5QtPvVmKY-1IaBxpaRQIJYnzWE2q5ih4V5BzEOLCHVkBoKbM_vvPeSWyCExIJqfzDJqjzGgY3Bl5FEvYOgtLAXPq3bmDICpe3QtVhl8fD3-pYaJw6GHcMapDj08Te89q"/>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold font-space-grotesk text-sm">CyberReader_01</h4>
+<div class="flex items-center gap-2">
+<span class="text-[#BF40FF] text-[10px] font-bold uppercase tracking-tighter">Premium</span>
+<span class="text-zinc-500 text-[10px] font-medium">lvl 42</span>
+</div>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-4 p-3 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-space-grotesk font-medium">Library</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-space-grotesk font-medium">Discover</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">local_fire_department</span>
+<span class="font-space-grotesk font-medium">Hot Releases</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-space-grotesk font-medium">Bookmarks</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg bg-[#BF40FF]/10 text-[#BF40FF] border-l-4 border-[#BF40FF] transition-all" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-space-grotesk font-bold">Notifications</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/5">
+<a class="flex items-center gap-4 p-3 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-space-grotesk font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Mobile Bottom NavBar Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-[#0A0A0C]/90 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.8)]">
+<button class="flex flex-col items-center text-zinc-600 hover:text-purple-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">home_max</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center text-zinc-600 hover:text-purple-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">search</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center text-zinc-600 hover:text-purple-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">import_contacts</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Shelf</span>
+</button>
+<button class="flex flex-col items-center text-[#BF40FF] drop-shadow-[0_0_8px_rgba(191,64,255,0.6)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Alerts</span>
+</button>
+<button class="flex flex-col items-center text-zinc-600 hover:text-purple-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">person_filled</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+</body></html>
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#39393b",
+                    "tertiary": "#ffb2b8",
+                    "surface-container-low": "#1c1b1d",
+                    "primary": "#e8b3ff",
+                    "surface-container-highest": "#353437",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "surface-dim": "#131315",
+                    "inverse-on-surface": "#313032",
+                    "on-tertiary": "#67001d",
+                    "tertiary-fixed": "#ffdadb",
+                    "secondary-fixed": "#7df4ff",
+                    "on-primary": "#500074",
+                    "surface": "#131315",
+                    "on-tertiary-container": "#5b0018",
+                    "inverse-surface": "#e5e1e4",
+                    "primary-fixed": "#f6d9ff",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "on-secondary-fixed": "#002022",
+                    "on-error": "#690005",
+                    "surface-variant": "#353437",
+                    "secondary-container": "#00eefc",
+                    "on-tertiary-fixed": "#40000f",
+                    "outline-variant": "#4f4254",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "on-secondary": "#00363a",
+                    "secondary": "#d3fbff",
+                    "on-background": "#e5e1e4",
+                    "surface-tint": "#e8b3ff",
+                    "surface-container-high": "#2a2a2c",
+                    "primary-container": "#c960ff",
+                    "on-surface-variant": "#d3c1d6",
+                    "on-surface": "#e5e1e4",
+                    "on-primary-fixed": "#310049",
+                    "tertiary-container": "#ff506e",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "outline": "#9c8ba0",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#00686f",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "on-primary-container": "#460066",
+                    "inverse-primary": "#9600d4",
+                    "background": "#131315",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "2.5rem",
+                    "sm": "0.5rem",
+                    "margin": "2rem",
+                    "xs": "0.25rem",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "gutter": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(232, 179, 255, 0.1);
+        }
+        .neon-border {
+            border: 1px solid rgba(191, 64, 255, 0.3);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px -5px rgba(191, 64, 255, 0.4);
+        }
+        .progress-glow {
+            box-shadow: 2px 0 8px rgba(191, 64, 255, 0.8);
+        }
+        body {
+            background-color: #0A0A0C;
+            color: #e5e1e4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md overflow-x-hidden pb-24">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_-10px_rgba(191,64,255,0.5)]">
+<div class="text-xl font-black text-[#BF40FF] italic tracking-tighter font-space-grotesk">NEO_MANGA</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-500 hover:text-[#BF40FF] transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#BF40FF]/50 active:scale-95 duration-200">
+<img class="w-full h-full object-cover" data-alt="vibrant neon cyberpunk avatar profile picture of a stylized character in shades of purple and blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR2NVdwx8MpNOh0SmDjGqe3gQAbsa9f2J17zqadRFJFI1jyg06cUmpFzNsVNnvn4sp7b126fffzUDYdUR9K6Hpck0hiKum122ZWZD_M0OJnROtKOZp9E-r-EG7adC36DSfy1aaefwxR3s8gm7GvuyPdNgKXCTDOW2JGlL9xcrkapidbniIFbwrZWX3pzaBAKI6mp7h-cIFbQc17ckrkBBwN05pAS13ERLiBvfMfIW8uWc7XZD3TUS8R3_hYmMYBWFSbpX9KlU9MO_d"/>
+</div>
+</div>
+</nav>
+<main class="mt-20 px-4 md:px-margin max-w-6xl mx-auto space-y-8">
+<!-- Profile Header Section -->
+<section class="relative overflow-hidden rounded-xl glass-panel p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-start border border-[#BF40FF]/20">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#BF40FF] p-1 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="vibrant neon cyberpunk avatar profile picture of a stylized character in shades of purple and blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBWuaSSLVOKLNjiXqa3MaZm3l5ibxWE_C-AK3GDtz3t9XgiqoyVk0g1WPI0VU5kCRwMHTkI6ym66S1K8-2lNxx_mSXkaciu5pAl1u7MfyNnw55ZS9M8a00RpQS2z20AvDFmc6WAzssXr0TNFeee93CVpvxh6QikEorWazxdDCO8oGm5TKG2Aogkn9wiQ4Fi7wOKyBJRLYmINVVkW2WPM98dAiHFfN8rqIEJ31KRXqrODH1jfEPfRVSQR4r8Oj6WiNoG-Z9NJBQghC"/>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-sm neon-glow">
+                    LVL 42
+                </div>
+</div>
+<div class="flex-1 text-center md:text-left space-y-2">
+<h1 class="text-headline-lg font-headline-lg text-on-background">CyberReader_01</h1>
+<p class="text-zinc-400 font-body-md">Premium Member • เข้าร่วมเมื่อ ม.ค. 2024</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">auto_stories</span>
+<div>
+<p class="text-label-sm text-zinc-500">อ่านแล้ว</p>
+<p class="font-bold text-on-background">1,248 ตอน</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">favorite</span>
+<div>
+<p class="text-label-sm text-zinc-500">เรื่องโปรด</p>
+<p class="font-bold text-on-background">84 เรื่อง</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">grade</span>
+<div>
+<p class="text-label-sm text-zinc-500">คะแนนรีวิว</p>
+<p class="font-bold text-on-background">4.9/5</p>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-4 md:mt-0 px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-bold hover:scale-105 transition-transform neon-glow">
+                แก้ไขโปรไฟล์
+            </button>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Recently Read & Favorites -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Recently Read -->
+<div>
+<div class="flex justify-between items-end mb-4 px-2">
+<h2 class="text-headline-md font-headline-md border-l-4 border-[#BF40FF] pl-4 uppercase tracking-tighter">อ่านล่าสุด</h2>
+<button class="text-primary font-label-md hover:underline">ดูทั้งหมด</button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="dramatic manga style illustration of a cyberpunk samurai standing under neon signs with heavy rain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnjVTeqgyBl9W6D3839GKwYGqY9Pv7J6GkqddK3p3M0NrV3ZLIN1LajK-lDn5Sau7C6VWDiEQ_Ba3dR7De2Fy-s8DEyg4KoKSleCu1QXk0fM1UTBgD5ckgDnvpprMViPrhUaqXpEJUk50y62AnlePOM9kpT97UHB7dSeWE2vbMZ6xf8j5AIOGnbViaPrUcvy5-MlQfY43xQ8Aex7cVaolRL6OXpPUZs855Ss7dAN64jpVlo9OijnsA2UrqZ1bE6Poc9ORXm8VHDjLN"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 75%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Neon Shadow IV</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 124 / 150</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="vibrant anime style art of a futuristic tech lab with holographic screens and cool blue and purple lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXly_oSwp6uqr2g4TULHq1qhcXvU7Sn_AoU0IFz5l8x2Cbo8T0dOsLJd6EdAYPugM9Hx0uxRIw0mWxxZFrBzEzJ8G4cdvYHHeLsuzwgtBten86iLFeDXNlS5jGOHrY1OT3ESR_BOJdUl58GHGaDWnrL4qRmifzLVr09Uu9MnkxBdL1sCga3DjcGAKUxPAhGvg57Xx4dChOj9lisC6-NVCqAbpmWYnD3HUEP2o743YHDpKAk5On7vzII2dmQJXRZrbekidIxeQzObSx"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 90%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Bio-Glitch Odyssey</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 42 / 45</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="stylized manga illustration of a bustling Tokyo street at night with glowing lanterns and digital billboards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVWdN-gFceBxByfeRRMEbXMwVBUVs2E6mNTFvtJtYe0TQsHOW-45mbYenL7H9qCwb1GY9RCcD294HflteAoQ-Hh_xNHxRFQ2vteWXIHgakkfWu_JtWI7tuuOn-RVswte3ls9mzCnPbiykSyNwV3Y_Zvri7MXQt8TU0RYpplSKXnMqqK8ABIT3e1RcgtE6QsVAoqJht4cgfkhyDeyndzTwxANVUeE9oUkSqiYlOrM-mNwJ452fW3BODiKR3xVtH1N3ap62rfa4RmYQ7"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 30%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Circuit City Blues</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 12 / 120</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Style Stats/Achievement -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-panel p-6 rounded-xl border border-white/5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-background">ความคืบหน้าการอ่าน</h3>
+<span class="material-symbols-outlined text-[#BF40FF]">query_stats</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-label-sm text-zinc-400">
+<span>เป้าหมายเดือนนี้</span>
+<span>120/200 ตอน</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 60%;"></div>
+</div>
+</div>
+<p class="text-label-sm text-zinc-500">คุณอ่านมากกว่า 85% ของนักอ่านในสัปดาห์นี้!</p>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-background">เหรียญตราล่าสุด</h3>
+<span class="material-symbols-outlined text-[#BF40FF]">military_tech</span>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#BF40FF]">bolt</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined">nights_stay</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container border border-dashed border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-600">add</span>
+</div>
+</div>
+<p class="text-label-sm text-zinc-500">สะสมให้ครบ 12 อันเพื่อปลดล็อกธีม "Void Cyan"</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Settings & Community -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="glass-panel rounded-xl overflow-hidden border border-white/5">
+<div class="p-6 border-b border-white/5">
+<h3 class="text-headline-md font-headline-md uppercase tracking-tight">ตั้งค่าบัญชี</h3>
+</div>
+<div class="flex flex-col">
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">account_circle</span>
+<span class="flex-1 text-left">ข้อมูลส่วนตัว</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">notifications_active</span>
+<span class="flex-1 text-left">การแจ้งเตือน</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">account_balance_wallet</span>
+<span class="flex-1 text-left">สมาชิก Premium</span>
+<span class="text-primary text-label-sm font-bold">ใช้งานอยู่</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">palette</span>
+<span class="flex-1 text-left">ธีมและหน้าตาแอป</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">security</span>
+<span class="flex-1 text-left">ความปลอดภัย</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<div class="p-6 mt-4">
+<button class="w-full py-3 rounded-lg border border-error/50 text-error hover:bg-error/10 transition-colors font-bold uppercase text-label-md">
+                                ออกจากระบบ
+                            </button>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary-container to-[#BF40FF] p-6 text-on-primary-container">
+<div class="relative z-10 space-y-4">
+<h4 class="font-headline-md font-bold leading-tight">พบปัญหาการใช้งาน?</h4>
+<p class="text-body-md opacity-90">ติดต่อทีมงานซัพพอร์ตได้ตลอด 24 ชม.</p>
+<button class="px-6 py-2 bg-[#0A0A0C] text-white rounded-full font-bold text-label-md">ติดต่อเรา</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl opacity-20 rotate-12">support_agent</span>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-[#0A0A0C]/90 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.8)]">
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">home_max</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Search</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">import_contacts</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Shelf</span>
+</a>
+<a class="flex flex-col items-center text-[#BF40FF] drop-shadow-[0_0_8px_rgba(191,64,255,0.6)] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_filled</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#39393b",
+                    "tertiary": "#ffb2b8",
+                    "surface-container-low": "#1c1b1d",
+                    "primary": "#e8b3ff",
+                    "surface-container-highest": "#353437",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "surface-dim": "#131315",
+                    "inverse-on-surface": "#313032",
+                    "on-tertiary": "#67001d",
+                    "tertiary-fixed": "#ffdadb",
+                    "secondary-fixed": "#7df4ff",
+                    "on-primary": "#500074",
+                    "surface": "#131315",
+                    "on-tertiary-container": "#5b0018",
+                    "inverse-surface": "#e5e1e4",
+                    "primary-fixed": "#f6d9ff",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "on-secondary-fixed": "#002022",
+                    "on-error": "#690005",
+                    "surface-variant": "#353437",
+                    "secondary-container": "#00eefc",
+                    "on-tertiary-fixed": "#40000f",
+                    "outline-variant": "#4f4254",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "on-secondary": "#00363a",
+                    "secondary": "#d3fbff",
+                    "on-background": "#e5e1e4",
+                    "surface-tint": "#e8b3ff",
+                    "surface-container-high": "#2a2a2c",
+                    "primary-container": "#c960ff",
+                    "on-surface-variant": "#d3c1d6",
+                    "on-surface": "#e5e1e4",
+                    "on-primary-fixed": "#310049",
+                    "tertiary-container": "#ff506e",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "outline": "#9c8ba0",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#00686f",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "on-primary-container": "#460066",
+                    "inverse-primary": "#9600d4",
+                    "background": "#131315",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "2.5rem",
+                    "sm": "0.5rem",
+                    "margin": "2rem",
+                    "xs": "0.25rem",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "gutter": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0C;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #e5e1e4;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(191, 64, 255, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px -3px rgba(191, 64, 255, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #BF40FF;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_-10px_rgba(191,64,255,0.5)]">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 transition-colors hover:text-[#BF40FF]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-black text-[#BF40FF] italic tracking-tighter font-space-grotesk">NEO_MANGA</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-zinc-500 font-label-sm">SETTINGS</span>
+<div class="w-8 h-8 rounded-full border border-[#BF40FF]/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of a digital cyberpunk avatar with glowing neon purple visor and futuristic tech-wear elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWNvQ2Rz1rRFzrXekS-dZ6ZAF5D1OzJgLVrasoGPQBV3awS8w7CXFRjOQKuWvtcQYFlOUbbpNAbn5iURT2ihTIp3CkYPlO1LmvWgrqBNduDAyIAHWzUHG9GwAe0bHYCHzz6AKCzFdS-gEaYAuWvA2meUK1ubDaq3xbzVBhQuzzHnVbInghOZyUrPeLLQpp59x7KoM0stWag_T46LGlOkbOrhKhccudZFO5U9kc5hTPy1YQIoC9u3OlGLQiIyp8r3-EoQ49QYTQi_IM"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-28 px-4 md:px-8 max-w-4xl mx-auto w-full">
+<!-- Header Section -->
+<section class="mb-8">
+<h2 class="font-headline-lg text-on-surface mb-2">ตั้งค่าระบบ</h2>
+<p class="font-body-md text-zinc-500">ปรับแต่งประสบการณ์การอ่านมังงะในแบบของคุณ</p>
+</section>
+<div class="grid grid-cols-1 gap-6">
+<!-- Account Section -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-[#BF40FF]">account_circle</span>
+<h3 class="font-headline-md text-[#BF40FF]">บัญชีผู้ใช้</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5 hover:border-[#BF40FF]/30 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-zinc-800">
+<img class="w-full h-full object-cover" data-alt="profile avatar icon with neon purple glitch effect on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUSSS0L8ygymw4vQTEwAUb1PVNJ027ojW5usv3v0-rF33_DAIH2wkfE4K__6xfo9ieqmbPFWh6mf6NZDl-ccjgJBuLfIHEaClRmI6Qf1Gz7iw7d7XvsbkOJ9U4qGWW91kJw2mOmSZmKLnEvB5vi70yv0W9nP4lIs5AfI1FdVnglNcd0K6m9C-BulpGKzoc8sB6DyyvOIppaf9t0TrcJ1LoCjT2pBFQE8WiTr4JRUGybpKsuOaXurrtv9S-qHvZdQCPCGNtDgf0Yc2Q"/>
+</div>
+<div>
+<p class="font-label-md text-on-surface">CyberReader_01</p>
+<p class="text-xs text-zinc-500">Premium Member • lvl 42</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-[#BF40FF] text-white rounded-lg font-label-sm active:scale-95 transition-transform neon-glow">แก้ไขโปรไฟล์</button>
+</div>
+</div>
+</div>
+<!-- Reading Settings (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Reading Direction -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-[#BF40FF]">menu_book</span>
+<h3 class="font-headline-md text-on-surface text-lg">การอ่าน</h3>
+</div>
+<div class="space-y-4">
+<label class="block">
+<span class="font-label-sm text-zinc-400 block mb-2">ทิศทางการอ่าน</span>
+<div class="flex p-1 bg-surface-container-lowest rounded-lg border border-white/5">
+<button class="flex-1 py-2 rounded-md bg-[#BF40FF]/10 text-[#BF40FF] font-label-sm border border-[#BF40FF]/20">ขวาไปซ้าย</button>
+<button class="flex-1 py-2 rounded-md text-zinc-500 font-label-sm hover:text-white transition-colors">ซ้ายไปขวา</button>
+<button class="flex-1 py-2 rounded-md text-zinc-500 font-label-sm hover:text-white transition-colors">แนวตั้ง</button>
+</div>
+</label>
+<div class="flex items-center justify-between py-2">
+<span class="font-label-md">โหมดเลื่อนต่อเนื่อง</span>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-[#BF40FF] cursor-pointer">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Display & Brightness -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-[#BF40FF]">brightness_medium</span>
+<h3 class="font-headline-md text-on-surface text-lg">หน้าจอ</h3>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md">ความสว่างขณะอ่าน</span>
+<span class="font-label-sm text-[#BF40FF]">85%</span>
+</div>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-[#BF40FF]" type="range" value="85"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md">ฟิลเตอร์แสงสีฟ้า</span>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-zinc-700 cursor-pointer">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notifications & Privacy -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-[#BF40FF]">notifications_active</span>
+<h3 class="font-headline-md text-on-surface text-lg">การแจ้งเตือนและส่วนตัว</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<div>
+<p class="font-label-md">ตอนใหม่ของมังงะที่ติดตาม</p>
+<p class="text-xs text-zinc-500">แจ้งทันทีเมื่อมีการอัปเดต</p>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-[#BF40FF] cursor-pointer">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<div>
+<p class="font-label-md">การแนะนำเรื่องที่น่าสนใจ</p>
+<p class="text-xs text-zinc-500">มังงะแนวที่คุณชอบ</p>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-zinc-700 cursor-pointer">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+<div class="flex items-center justify-between border-b border-white/5 pb-4 md:border-b-0">
+<div>
+<p class="font-label-md">ซ่อนโปรไฟล์เป็นส่วนตัว</p>
+<p class="text-xs text-zinc-500">ผู้อื่นจะไม่เห็นประวัติการอ่าน</p>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-zinc-700 cursor-pointer">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+<div class="flex items-center justify-between md:border-b-0 pb-4">
+<div>
+<p class="font-label-md">อีเมลแจ้งข่าวสาร</p>
+<p class="text-xs text-zinc-500">รับโปรโมชันและกิจกรรม</p>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-[#BF40FF] cursor-pointer">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Support & About -->
+<div class="glass-panel rounded-xl p-6 border-dashed border-[#BF40FF]/20">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-zinc-400">help_center</span>
+<h3 class="font-headline-md text-on-surface text-lg">ช่วยเหลือและข้อมูล</h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 hover:bg-[#BF40FF]/10 transition-colors border border-transparent hover:border-[#BF40FF]/30">
+<span class="material-symbols-outlined text-[#BF40FF]">contact_support</span>
+<span class="font-label-sm">ติดต่อเรา</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 hover:bg-[#BF40FF]/10 transition-colors border border-transparent hover:border-[#BF40FF]/30">
+<span class="material-symbols-outlined text-[#BF40FF]">description</span>
+<span class="font-label-sm">นโยบาย</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 hover:bg-[#BF40FF]/10 transition-colors border border-transparent hover:border-[#BF40FF]/30">
+<span class="material-symbols-outlined text-[#BF40FF]">restore_from_trash</span>
+<span class="font-label-sm">ล้างแคช</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 hover:bg-red-500/10 transition-colors border border-transparent hover:border-red-500/30">
+<span class="material-symbols-outlined text-red-500">logout</span>
+<span class="font-label-sm text-red-500">ออกจากระบบ</span>
+</button>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="text-center py-6">
+<p class="font-label-sm text-zinc-600">NEO_MANGA VERSION 2.4.0 (CYBER-PULSE)</p>
+<p class="text-[10px] text-zinc-700 tracking-[0.2em] mt-1">MADE FOR THE NEXT GENERATION OF READERS</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-[#0A0A0C]/90 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.8)]">
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">home_max</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">import_contacts</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Shelf</span>
+</a>
+<a class="flex flex-col items-center text-[#BF40FF] drop-shadow-[0_0_8px_rgba(191,64,255,0.6)] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_filled</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+<!-- Drawer Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] opacity-0 pointer-events-none transition-opacity"></div>
+</body></html>
+
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#9c8ba0",
+                    "inverse-primary": "#9600d4",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "on-secondary-fixed": "#002022",
+                    "secondary": "#d3fbff",
+                    "on-primary-fixed": "#310049",
+                    "surface-bright": "#39393b",
+                    "secondary-fixed": "#7df4ff",
+                    "surface-container-highest": "#353437",
+                    "on-surface-variant": "#d3c1d6",
+                    "background": "#131315",
+                    "primary-fixed": "#f6d9ff",
+                    "error": "#ffb4ab",
+                    "surface-tint": "#e8b3ff",
+                    "primary": "#e8b3ff",
+                    "on-primary": "#500074",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "on-surface": "#e5e1e4",
+                    "surface-container-high": "#2a2a2c",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-tertiary-container": "#5b0018",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "inverse-on-surface": "#313032",
+                    "tertiary-container": "#ff506e",
+                    "on-tertiary-fixed": "#40000f",
+                    "surface-container-low": "#1c1b1d",
+                    "on-secondary-container": "#00686f",
+                    "inverse-surface": "#e5e1e4",
+                    "on-primary-container": "#460066",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "primary-container": "#c960ff",
+                    "surface": "#131315",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-tertiary": "#67001d",
+                    "secondary-container": "#00eefc",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "surface-variant": "#353437",
+                    "on-background": "#e5e1e4",
+                    "outline-variant": "#4f4254",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-dim": "#131315",
+                    "error-container": "#93000a",
+                    "on-secondary": "#00363a",
+                    "surface-container": "#201f21",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#ffb2b8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "sm": "0.5rem",
+                    "unit": "4px",
+                    "gutter": "1.5rem",
+                    "xs": "0.25rem",
+                    "xl": "2.5rem",
+                    "margin": "2rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(191, 64, 255, 0.2);
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(191, 64, 255, 0.8);
+        }
+        .neon-border-pulse:hover {
+            box-shadow: 0 0 20px rgba(191, 64, 255, 0.4);
+            border-color: #BF40FF;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0A0A0C;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #BF40FF;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#0A0A0C] text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-lg border-b border-[#BF40FF]/20">
+<div class="flex items-center gap-4">
+<button class="text-[#BF40FF] active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-black italic tracking-tighter text-[#BF40FF] drop-shadow-[0_0_10px_rgba(191,64,255,0.5)] font-['Space_Grotesk']">MANGA PULSE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-400" data-icon="search">search</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#BF40FF]/50">
+<img alt="User Profile" data-alt="close up avatar portrait of a modern digital artist with purple neon lighting accents and tech wear aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmdhidFCbX3ATQdscBpP9rd0sUjMZGwtnuHNiQveFjei3I8tj8PlGMDh8Mjk2ZbR0wcn2KPBIx7EdmZ06yGGbSeBCtdgYVBc8pZfOcFNwBw8BjMQuGFL9qNfL5JFeUbmddRUOvi83t9n2vuhSG7It5fA7Z4ftzEG4E4BmzvH-4OkMDXdMbR_s-2Q61lw2-ey8BFuQqlSeGZ99AVd2Vpd7n3gG32xuzLdUbsjlvNCWOuHNNE-WqTv82TjDTRy-fFbjA2jdPDr28W1wi"/>
+</div>
+</div>
+</header>
+<!-- Hero Section / Backdrop -->
+<section class="relative w-full h-[442px] overflow-hidden mt-0">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 grayscale blur-sm" data-alt="dramatic cinematic digital art showing a dark ethereal warrior standing in front of a glowing purple gate with lightning effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIriGH2BKe5DE3PDuZV4rqLlYEitg0mxvyjhLO_gmztmiSWyfqaPixsKGEoKlxEk4unlI7C1qsgpgXzU8K172Mz45Zbg_M5i8t90PmU1aRlFaOXGP6goHQZXKGgOyPQgF8Nrt10jN18Bt2NZwm_xxtMbT_sPbvKjwZ0NeyATnPyMh8gze93gfektu36jJ-gAUH9CtUjd8iCN7RYwGK0nEunr73gXcvBa8zRZhmSth8rnwDLnTuZoaTkZTIF1z_HxQkqb_21l5yIphk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end pb-12">
+<div class="flex flex-col md:flex-row gap-8 items-end">
+<!-- Manga Cover -->
+<div class="hidden md:block w-64 aspect-[2/3] rounded-xl overflow-hidden border-2 border-[#BF40FF] shadow-[0_0_30px_rgba(191,64,255,0.3)]">
+<img class="w-full h-full object-cover" data-alt="official manga style cover art for Solo Leveling featuring Sung Jin-woo with glowing purple eyes and twin daggers in a dark dungeon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVT9WR77AlOYvraZxYjdhdlC2IW3hjWmJwJlPVQIM9_UjCKZViaoHo3r3nuPcpdCRf1i3Xjmkuh2kQ0ifyfLp1Xjgbk041IsOGnhwnxeEaZ0MGxd3eNLmHM_cRmMBcsEAFVp9yC7S9PljqZYn14VHR7eQner9xbIC4MtlHsV2StNTyVG7iZMno4z2pGJOuvx0gZ9aTyxkWaSjX_-8wATncisChiIzLVhcLRcrI0CoQYESotUUk59NnPDnS5bes9RitLfIptoWyTSwm"/>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex flex-wrap gap-2">
+<span class="bg-[#BF40FF]/10 text-[#BF40FF] border border-[#BF40FF]/30 px-3 py-1 rounded-full text-label-sm font-label-sm">ACTION</span>
+<span class="bg-[#00eefc]/10 text-[#00eefc] border border-[#00eefc]/30 px-3 py-1 rounded-full text-label-sm font-label-sm">FANTASY</span>
+<span class="bg-surface-container-highest text-zinc-400 border border-outline-variant px-3 py-1 rounded-full text-label-sm font-label-sm">SHONEN</span>
+</div>
+<h2 class="text-headline-xl font-headline-xl neon-glow text-white tracking-tighter">Solo Leveling</h2>
+<div class="flex items-center gap-4">
+<div class="flex items-center text-[#BF40FF]">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star_half">star_half</span>
+<span class="ml-2 text-white font-bold">4.9</span>
+</div>
+<span class="text-zinc-500">•</span>
+<span class="text-zinc-400 font-label-md">1.2M READS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<main class="container mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Details & Episodes -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Read Now CTA (Mobile Only Visibility managed by responsive classes) -->
+<div class="md:hidden">
+<button class="w-full py-4 bg-[#BF40FF] text-white font-black rounded-xl shadow-[0_0_20px_rgba(191,64,255,0.6)] active:scale-95 transition-all">
+                    อ่านตอนนี้ (READ NOW)
+                </button>
+</div><div class="md:hidden flex flex-col gap-3 mt-4">
+<p class="text-label-sm text-zinc-500 uppercase tracking-widest px-1">Share with friends</p>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-lg border border-[#BF40FF]/30 bg-[#BF40FF]/5 hover:bg-[#BF40FF]/10 flex items-center justify-center transition-all active:scale-95">
+<svg class="w-5 h-5 text-[#BF40FF]" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</button>
+<button class="flex-1 py-3 rounded-lg border border-[#BF40FF]/30 bg-[#BF40FF]/5 hover:bg-[#BF40FF]/10 flex items-center justify-center transition-all active:scale-95">
+<svg class="w-4 h-4 text-[#BF40FF]" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</button>
+<button class="flex-1 py-3 rounded-lg border border-[#BF40FF]/30 bg-[#BF40FF]/5 hover:bg-[#BF40FF]/10 flex items-center justify-center transition-all active:scale-95">
+<img alt="Line" class="w-5 h-5 invert-[.46] sepia-[.94] saturate-[4436%] hue-rotate-[255deg] brightness-[100%] contrast-[106%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQtx0RJfkEkgqapwsJ3idh_HWrXt07FNJEtFiBBIF7CnOO45zHI9w8yhS4RgqcdlrftqgNOHDLffsxE820M9BnqlpuAvA0eyJeNLGksPe2_C5NsvAhk20qYW3AiwGT5xfkOpKJOU17ccUnTVn14hTjd5W8bGXOxCA2uFF5bH7bKQEM_jA7Tf6x-E2Ij-KmRyudMI97qLoDPA5cVp0vds_2I0aRcbxLlvYZWbUzezsOzgp7e-wrlMn4lpeKacPcdk-w0sEghvMrH-Tq"/>
+</button>
+<button class="flex-1 py-3 rounded-lg border border-[#BF40FF]/30 bg-[#BF40FF]/5 hover:bg-[#BF40FF]/10 flex items-center justify-center transition-all active:scale-95">
+<span class="material-symbols-outlined text-[#BF40FF] text-xl">link</span>
+</button>
+</div>
+</div>
+<!-- Synopsis Section -->
+<section class="space-y-4">
+<h3 class="text-headline-md font-headline-md border-l-4 border-[#BF40FF] pl-4">SYNOPSIS</h3>
+<p class="text-zinc-400 text-body-lg leading-relaxed">
+                    In a world where hunters, humans who possess magical abilities, must battle deadly monsters to protect the human race from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival. After narrowly surviving an overwhelmingly powerful double dungeon, a mysterious program called the System chooses him as its sole player and gives him the extremely rare ability to level up in strength.
+                </p>
+</section>
+<!-- Episodes Section -->
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md border-l-4 border-[#BF40FF] pl-4">EPISODES (179)</h3>
+<button class="flex items-center gap-1 text-[#BF40FF] font-label-md">
+<span class="material-symbols-outlined" data-icon="sort">sort</span>
+                        NEWEST FIRST
+                    </button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Episode Card -->
+<div class="glass-panel group p-4 rounded-xl flex items-center gap-6 hover:bg-[#BF40FF]/5 transition-all duration-300 cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high border border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100" data-alt="stylized manga panel snapshot showing the main character staring intensely with purple energy particles floating around him" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQbRZeyOJE0nMuZq6AWVPG4EVcy2JW4vJ7-N6UDoZDN0ikC3RItcWY4OQMpT8PcHiqEgdvfpCFk5cBMK-Ov0LjTHN6OAb3P_nvN4RToI9V27kXhlR0Q1_Q1cqX_tooNQMIkmRRbxl9bomEUQ4Mp_KMIA3qNqnR5VcPYZo6gLR7NdTKCmK2TymrJdlw0Jo8XltzdYKmkoPESlH2IrHH7e8sRk7_TGATM_7tKUt6OnKl5LSCo_oa7mYgN2J3hDpSl2pjtIOsSfrbFhlS"/>
+</div>
+<div class="flex-1">
+<p class="text-zinc-500 text-label-sm">CHAPTER 179</p>
+<h4 class="font-bold text-white group-hover:text-[#BF40FF] transition-colors">The Monarch's Return</h4>
+<p class="text-zinc-500 text-[12px]">2 days ago</p>
+</div>
+<span class="material-symbols-outlined text-[#BF40FF] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+<div class="glass-panel group p-4 rounded-xl flex items-center gap-6 hover:bg-[#BF40FF]/5 transition-all duration-300 cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high border border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100" data-alt="illustration of a dark dungeon corridor lit by eerie purple torches for manga chapter preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfvWuUgWDhot9E_MN5Fvs-kBN7wmm2eCyMacW5ZNgAXcOFci7kiI4-C4gZqLtmFu83jeHSSqkXNnDq3uHpCdDseJb154zMHd-71lheCWg6CiSlOxRNqzTNKQfngd45LC-w8bJi-StUZ-722If_9PNPVC1fzJneab1mUuVTeX2uPpTazW6FKfZiZXW0fZGQFxYXvNYuIDj58zYMcDHJHRuVqToPXMe2bOu2NdI0Uh6osGUk5ziAhQf0OKQf8lRHbtF5tvXGPvy_9C5b"/>
+</div>
+<div class="flex-1">
+<p class="text-zinc-500 text-label-sm">CHAPTER 178</p>
+<h4 class="font-bold text-white group-hover:text-[#BF40FF] transition-colors">Eternal Sleep</h4>
+<p class="text-zinc-500 text-[12px]">1 week ago</p>
+</div>
+<span class="material-symbols-outlined text-[#BF40FF] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+<div class="glass-panel group p-4 rounded-xl flex items-center gap-6 hover:bg-[#BF40FF]/5 transition-all duration-300 cursor-pointer">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high border border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100" data-alt="close up of a legendary weapon with glowing runes and sharp edges for manga asset preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiCLWIOoZ42XQFlYviGkfqpLcBUq-pQKL3Rz051cqkjZioSs662ghoxW_V-RA7Y-sfgiP5QoQdFIyi3_7EFLtJfC8z8ErR0iWzoRQluUyNHyO16Tpa-ze5oplkYdTk4K_PFXt0kPwbNT0T4WiF1LJV4hZpHwtozP0k1gXeIrFTPFSdhmyScjq7VZ3BP0_8QIgcMQDP5Q7PKn1Lnl2o6trAjv1ngxynmWgCDTkxh5mf9R53gP-QqfM0Pzz-8jSvmsMEegqbJMvubcgG"/>
+</div>
+<div class="flex-1">
+<p class="text-zinc-500 text-label-sm">CHAPTER 177</p>
+<h4 class="font-bold text-white group-hover:text-[#BF40FF] transition-colors">Shadow Army Rising</h4>
+<p class="text-zinc-500 text-[12px]">2 weeks ago</p>
+</div>
+<span class="material-symbols-outlined text-[#BF40FF] opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+</div>
+<button class="w-full py-3 text-zinc-400 font-label-md border border-outline-variant rounded-lg hover:border-[#BF40FF] hover:text-[#BF40FF] transition-all">
+                    VIEW ALL CHAPTERS
+                </button>
+</section>
+<!-- Comments Section -->
+<section class="space-y-6 pt-12">
+<h3 class="text-headline-md font-headline-md border-l-4 border-[#BF40FF] pl-4">COMMENTS</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img alt="My Avatar" data-alt="minimalist user avatar profile picture with dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXZBYyzo1OmGxa99NpjTL0DuVVsfc0szaXUjoV3eolJDS-SWSgdqdSQ_gGK6IFxXIMYhLbYkLqgvWsQdXaaxDKYb5ecBqOmBOxrlYg7n7vNfjwmxn9HS0NHhZIRq-JSZzOhP0XOCOQ_pTjwHhgYq5zYa5KNDKR0laYbrirC_kWX4sENaacJO8xkD41BgThUuNbRcGe-IMLFwBvBNeW7VgVdEHUteTJknf_A84MjK1jEzbohD4H1ElxR_BlPyd8p0yzWMVdnp_8JT_C"/>
+</div>
+<div class="flex-1">
+<textarea class="w-full bg-[#131315] border-b-2 border-outline focus:border-[#BF40FF] focus:ring-0 text-white placeholder-zinc-600 p-2 transition-all" placeholder="Write a comment..." rows="2"></textarea>
+<div class="flex justify-end mt-2">
+<button class="px-6 py-2 bg-[#BF40FF] text-on-primary font-bold rounded-lg hover:scale-105 active:scale-95 transition-all">POST</button>
+</div>
+</div>
+</div>
+<!-- User Comment -->
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img alt="User Avatar" data-alt="avatar of a gamer with purple headset and neon room lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRao0qyYq_msLFxatRxN2Jtgakj0dWb_I4MalO4QcJPtEcn-mih8hwkqSQ40kpvTrIzSl63jSqLE177c7FAW29TWCQ4BG4Xq48GrsrIHWxz-zXs9Jk3DVbyi9ImR5AjUvwwqmvW-kGvBrnmAhhx7Ywf61zQ7OkN2xraMaEZmLLtwHzGl82mWnfyOHZGmAxFCB_m1Jbi_M4mE_rKqMNHSvstk2SytGU0MqM-toy7L3QRGa2l8itg35puG5b6M9ENRQ_2yslgQ0rwA2U"/>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-white">JIN_WOO_FAN</span>
+<span class="text-zinc-500 text-[10px]">4 HOURS AGO</span>
+</div>
+<p class="text-zinc-400 text-body-md">The art in chapter 179 is absolutely legendary! The way they handled the Shadow Monarch's return gave me literal chills. Best webtoon ever.</p>
+<div class="flex items-center gap-4 text-zinc-500 text-sm pt-2">
+<button class="flex items-center gap-1 hover:text-[#BF40FF]"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 42</button>
+<button class="hover:text-[#BF40FF]">REPLY</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Stats -->
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0A0A0C;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px -5px rgba(191, 64, 255, 0.3);
+        }
+        .neon-border-hover:hover {
+            border-color: #e8b3ff;
+            box-shadow: 0 0 15px rgba(232, 179, 255, 0.4);
+            transform: scale(1.02);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#39393b",
+                        "on-tertiary-fixed-variant": "#91002d",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f21",
+                        "tertiary-container": "#ff506e",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "primary-fixed-dim": "#e8b3ff",
+                        "on-surface-variant": "#d3c1d6",
+                        "tertiary": "#ffb2b8",
+                        "tertiary-fixed-dim": "#ffb2b8",
+                        "on-tertiary": "#67001d",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#002022",
+                        "outline": "#9c8ba0",
+                        "surface-dim": "#131315",
+                        "surface-container-low": "#1c1b1d",
+                        "surface": "#131315",
+                        "primary-container": "#c960ff",
+                        "secondary": "#d3fbff",
+                        "primary": "#e8b3ff",
+                        "background": "#131315",
+                        "on-primary-fixed-variant": "#7200a3",
+                        "secondary-fixed-dim": "#00dbe9",
+                        "on-primary-fixed": "#310049",
+                        "on-background": "#e5e1e4",
+                        "on-primary-container": "#460066",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface-variant": "#353437",
+                        "on-primary": "#500074",
+                        "inverse-primary": "#9600d4",
+                        "surface-container-high": "#2a2a2c",
+                        "inverse-surface": "#e5e1e4",
+                        "outline-variant": "#4f4254",
+                        "on-surface": "#e5e1e4",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary-fixed": "#f6d9ff",
+                        "inverse-on-surface": "#313032",
+                        "secondary-container": "#00eefc",
+                        "surface-tint": "#e8b3ff",
+                        "on-tertiary-fixed": "#40000f",
+                        "on-tertiary-container": "#5b0018",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#00686f",
+                        "surface-container-highest": "#353437",
+                        "secondary-fixed": "#7df4ff",
+                        "on-secondary": "#00363a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "label-sm": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 h-16 bg-zinc-950/70 backdrop-blur-xl border-b border-fuchsia-500/20 shadow-[0_0_20px_-5px_rgba(191,64,255,0.3)] z-50">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-fuchsia-500">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-2xl font-black text-fuchsia-500 tracking-widest uppercase font-space-grotesk">MANGA_CORE</h1>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-fuchsia-500/50 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="profile avatar of a futuristic cyberpunk character with neon highlights and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMBWievPZkArqZedaZgDNlHXzTFreXqN9h04Xel26mnod9JL2W5o1WGaRBD5X5R6TphVfUp1bbaUYXMiA-z-z2D6iKIKUS0qmUg2aKFWB0YoOhLH5bV5Tds1yzWztYX0LtCbaL_X6UeObTxEPoC3kMrvNe8FiQkhxz1VKipsD86oq7jCHOHzsKIMZQMZll7f4ZAnEf7rjLMUBv_zV4OXr77xdp54mYLKrdWaZglj5eQBu-KBKnUzH8M8-GQUHFkOwa0T5jES2xY4Jy"/>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-4xl mx-auto">
+<!-- Title and Balance Section -->
+<section class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-fuchsia-400 mb-2">เติมเหรียญ (Top-up)</h2>
+<div class="glass-panel p-6 rounded-xl border border-fuchsia-500/30 flex justify-between items-center overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<div>
+<p class="font-label-sm text-label-sm text-zinc-400 uppercase tracking-widest">ยอดเหรียญคงเหลือ</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-fuchsia-500" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-headline-md text-headline-md text-on-surface">1,250</span>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-fuchsia-500/10 text-fuchsia-400 px-3 py-1 rounded-full text-label-sm font-label-sm border border-fuchsia-500/30">Premium Member</span>
+</div>
+</div>
+</section>
+<!-- Coin Packages Grid -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">เลือกแพ็กเกจเหรียญ</h3>
+<p class="font-label-sm text-label-sm text-fuchsia-500">คุ้มค่าที่สุด</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Package 1 -->
+<div class="glass-panel p-6 rounded-xl border border-zinc-800 transition-all duration-300 cursor-pointer neon-border-hover flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center mb-4 group-hover:bg-fuchsia-500/20 transition-colors">
+<span class="material-symbols-outlined text-4xl text-fuchsia-500" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+<p class="font-headline-md text-headline-md mb-1">50 Coins</p>
+<p class="font-body-md text-zinc-400 mb-6">เริ่มอ่านได้ทันที</p>
+<button class="w-full bg-fuchsia-500 py-3 rounded-lg font-label-md text-on-primary shadow-[0_0_15px_rgba(191,64,255,0.4)] active:scale-95 transition-all">
+                        35 THB
+                    </button>
+</div>
+<!-- Package 2 - Popular -->
+<div class="glass-panel p-6 rounded-xl border-2 border-fuchsia-500 transition-all duration-300 cursor-pointer scale-105 shadow-[0_0_30px_rgba(191,64,255,0.2)] flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 bg-fuchsia-500 text-on-primary text-[10px] font-bold px-4 py-1 rotate-45 translate-x-4 translate-y-2 uppercase tracking-tighter">Popular</div>
+<div class="w-16 h-16 rounded-full bg-fuchsia-500/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-4xl text-fuchsia-500" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+<p class="font-headline-md text-headline-md mb-1">100 Coins</p>
+<p class="font-body-md text-zinc-400 mb-6">+ แถมฟรี 5 Coins</p>
+<button class="w-full bg-fuchsia-500 py-3 rounded-lg font-label-md text-on-primary shadow-[0_0_15px_rgba(191,64,255,0.4)] active:scale-95 transition-all">
+                        69 THB
+                    </button>
+</div>
+<!-- Package 3 -->
+<div class="glass-panel p-6 rounded-xl border border-zinc-800 transition-all duration-300 cursor-pointer neon-border-hover flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center mb-4 group-hover:bg-fuchsia-500/20 transition-colors">
+<span class="material-symbols-outlined text-4xl text-fuchsia-500" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+<p class="font-headline-md text-headline-md mb-1">500 Coins</p>
+<p class="font-body-md text-zinc-400 mb-6">+ แถมฟรี 50 Coins</p>
+<button class="w-full bg-fuchsia-500 py-3 rounded-lg font-label-md text-on-primary shadow-[0_0_15px_rgba(191,64,255,0.4)] active:scale-95 transition-all">
+                        329 THB
+                    </button>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="mb-20">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">วิธีการชำระเงิน</h3>
+<div class="space-y-4">
+<!-- Method 1 -->
+<div class="glass-panel p-4 rounded-xl border border-zinc-800 flex items-center justify-between hover:bg-zinc-900/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-fuchsia-500/10 transition-colors">
+<span class="material-symbols-outlined text-fuchsia-500">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Credit Card / Debit Card</p>
+<p class="text-xs text-zinc-500">Visa, Mastercard, JCB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-zinc-600 group-hover:text-fuchsia-500 transition-colors">chevron_right</span>
+</div>
+<!-- Method 2 -->
+<div class="glass-panel p-4 rounded-xl border border-zinc-800 flex items-center justify-between hover:bg-zinc-900/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-fuchsia-500/10 transition-colors">
+<span class="material-symbols-outlined text-fuchsia-500">qr_code_2</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">PromptPay</p>
+<p class="text-xs text-zinc-500">Scan via Mobile Banking</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-zinc-600 group-hover:text-fuchsia-500 transition-colors">chevron_right</span>
+</div>
+<!-- Method 3 -->
+<div class="glass-panel p-4 rounded-xl border border-zinc-800 flex items-center justify-between hover:bg-zinc-900/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-fuchsia-500/10 transition-colors">
+<span class="material-symbols-outlined text-fuchsia-500" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">TrueMoney Wallet</p>
+<p class="text-xs text-zinc-500">Pay with your digital wallet</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-zinc-600 group-hover:text-fuchsia-500 transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer Logic (Side Panel Mock for Layout context) -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-zinc-950/95 backdrop-blur-2xl border-r border-fuchsia-500/20 flex-col py-6">
+<div class="px-6 mb-8 flex flex-col items-center">
+<div class="w-20 h-20 rounded-full border-4 border-fuchsia-500 mb-3 overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close-up of a digital profile portrait with stylized purple hair and glowing cybernetic eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiv6QyjHjoRJv8lDzk6Dh5jkUQU6_KuWW6Pcu5qLVl6DMelrPLEB8yCkImwhwYTM8K91TJfXY0wJKlQGH8Dk-XzjdgrBVkQBmG7LSeTLagRfmPhOf6fr1fduiivRfTvWEOpRyCaEtUbQI_kTTFzP8ZvUsHwzYQZr9lry4efXupw5hoyhSoMhYcv7aC6mXz7VEZgLlvkISiM6NjEpEmmCccYqOtvKjEocELroaE_NsgULHm2yDhnwJmKFpg4rYe0Bnb3jlb3vTuP_ZN"/>
+</div>
+<h4 class="font-headline-md text-fuchsia-500 font-black">Neo_Reader</h4>
+<p class="text-zinc-500 text-sm">1,250 Coins</p>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<div class="flex items-center gap-4 bg-fuchsia-500/10 text-fuchsia-400 border-l-4 border-fuchsia-500 px-6 py-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-space-grotesk font-medium">My Wallet</span>
+</div>
+<div class="flex items-center gap-4 text-zinc-400 px-6 py-4 hover:bg-zinc-900 transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-space-grotesk font-medium">Transaction History</span>
+</div>
+<div class="flex items-center gap-4 text-zinc-400 px-6 py-4 hover:bg-zinc-900 transition-colors">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-space-grotesk font-medium">Redeem Code</span>
+</div>
+<div class="mt-auto border-t border-zinc-800">
+<div class="flex items-center gap-4 text-zinc-400 px-6 py-4 hover:bg-zinc-900 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-space-grotesk font-medium">Settings</span>
+</div>
+<div class="flex items-center gap-4 text-zinc-400 px-6 py-4 hover:bg-zinc-900 transition-colors">
+<span class="material-symbols-outlined">help</span>
+<span class="font-space-grotesk font-medium">Help Center</span>
+</div>
+</div>
+</nav>
+</aside>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-3 pb-safe bg-zinc-950/80 backdrop-blur-lg border-t border-fuchsia-500/30 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] z-50 md:hidden">
+<button class="flex flex-col items-center justify-center text-zinc-500 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-[10px] font-space-grotesk font-medium uppercase tracking-wider mt-1">Library</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-500 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">monetization_on</span>
+<span class="text-[10px] font-space-grotesk font-medium uppercase tracking-wider mt-1">Store</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-500 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-space-grotesk font-medium uppercase tracking-wider mt-1">Updates</span>
+</button>
+<button class="flex flex-col items-center justify-center text-fuchsia-500 drop-shadow-[0_0_8px_rgba(191,64,255,0.8)] active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-space-grotesk font-medium uppercase tracking-wider mt-1">Profile</span>
+</button>
+</nav>
+</body></html>
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#39393b",
+                    "tertiary": "#ffb2b8",
+                    "surface-container-low": "#1c1b1d",
+                    "primary": "#e8b3ff",
+                    "surface-container-highest": "#353437",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "surface-dim": "#131315",
+                    "inverse-on-surface": "#313032",
+                    "on-tertiary": "#67001d",
+                    "tertiary-fixed": "#ffdadb",
+                    "secondary-fixed": "#7df4ff",
+                    "on-primary": "#500074",
+                    "surface": "#131315",
+                    "on-tertiary-container": "#5b0018",
+                    "inverse-surface": "#e5e1e4",
+                    "primary-fixed": "#f6d9ff",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "surface-container-lowest": "#0e0e10",
+                    "surface-container": "#201f21",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "on-secondary-fixed": "#002022",
+                    "on-error": "#690005",
+                    "surface-variant": "#353437",
+                    "secondary-container": "#00eefc",
+                    "on-tertiary-fixed": "#40000f",
+                    "outline-variant": "#4f4254",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "on-secondary": "#00363a",
+                    "secondary": "#d3fbff",
+                    "on-background": "#e5e1e4",
+                    "surface-tint": "#e8b3ff",
+                    "surface-container-high": "#2a2a2c",
+                    "primary-container": "#c960ff",
+                    "on-surface-variant": "#d3c1d6",
+                    "on-surface": "#e5e1e4",
+                    "on-primary-fixed": "#310049",
+                    "tertiary-container": "#ff506e",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "outline": "#9c8ba0",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#00686f",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "on-primary-container": "#460066",
+                    "inverse-primary": "#9600d4",
+                    "background": "#131315",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "2.5rem",
+                    "sm": "0.5rem",
+                    "margin": "2rem",
+                    "xs": "0.25rem",
+                    "md": "1rem",
+                    "lg": "1.5rem",
+                    "gutter": "1.5rem",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"],
+                    "label-md": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(232, 179, 255, 0.1);
+        }
+        .neon-border {
+            border: 1px solid rgba(191, 64, 255, 0.3);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px -5px rgba(191, 64, 255, 0.4);
+        }
+        .progress-glow {
+            box-shadow: 2px 0 8px rgba(191, 64, 255, 0.8);
+        }
+        body {
+            background-color: #0A0A0C;
+            color: #e5e1e4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md overflow-x-hidden pb-24">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_-10px_rgba(191,64,255,0.5)]">
+<div class="text-xl font-black text-[#BF40FF] italic tracking-tighter font-space-grotesk">NEO_MANGA</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-500 hover:text-[#BF40FF] transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-[#BF40FF]/50 active:scale-95 duration-200">
+<img class="w-full h-full object-cover" data-alt="vibrant neon cyberpunk avatar profile picture of a stylized character in shades of purple and blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR2NVdwx8MpNOh0SmDjGqe3gQAbsa9f2J17zqadRFJFI1jyg06cUmpFzNsVNnvn4sp7b126fffzUDYdUR9K6Hpck0hiKum122ZWZD_M0OJnROtKOZp9E-r-EG7adC36DSfy1aaefwxR3s8gm7GvuyPdNgKXCTDOW2JGlL9xcrkapidbniIFbwrZWX3pzaBAKI6mp7h-cIFbQc17ckrkBBwN05pAS13ERLiBvfMfIW8uWc7XZD3TUS8R3_hYmMYBWFSbpX9KlU9MO_d"/>
+</div>
+</div>
+</nav>
+<main class="mt-20 px-4 md:px-margin max-w-6xl mx-auto space-y-8">
+<!-- Profile Header Section -->
+<section class="relative overflow-hidden rounded-xl glass-panel p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center md:items-start border border-[#BF40FF]/20">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#BF40FF] p-1 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="vibrant neon cyberpunk avatar profile picture of a stylized character in shades of purple and blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBWuaSSLVOKLNjiXqa3MaZm3l5ibxWE_C-AK3GDtz3t9XgiqoyVk0g1WPI0VU5kCRwMHTkI6ym66S1K8-2lNxx_mSXkaciu5pAl1u7MfyNnw55ZS9M8a00RpQS2z20AvDFmc6WAzssXr0TNFeee93CVpvxh6QikEorWazxdDCO8oGm5TKG2Aogkn9wiQ4Fi7wOKyBJRLYmINVVkW2WPM98dAiHFfN8rqIEJ31KRXqrODH1jfEPfRVSQR4r8Oj6WiNoG-Z9NJBQghC"/>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-sm neon-glow">
+                    LVL 42
+                </div>
+</div>
+<div class="flex-1 text-center md:text-left space-y-2">
+<h1 class="text-headline-lg font-headline-lg text-on-background">CyberReader_01</h1>
+<p class="text-zinc-400 font-body-md">Premium Member • เข้าร่วมเมื่อ ม.ค. 2024</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">auto_stories</span>
+<div>
+<p class="text-label-sm text-zinc-500">อ่านแล้ว</p>
+<p class="font-bold text-on-background">1,248 ตอน</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">favorite</span>
+<div>
+<p class="text-label-sm text-zinc-500">เรื่องโปรด</p>
+<p class="font-bold text-on-background">84 เรื่อง</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-[#BF40FF] text-lg">grade</span>
+<div>
+<p class="text-label-sm text-zinc-500">คะแนนรีวิว</p>
+<p class="font-bold text-on-background">4.9/5</p>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-4 md:mt-0 px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-bold hover:scale-105 transition-transform neon-glow">
+                แก้ไขโปรไฟล์
+            </button>
+</section><!-- My Coins Section -->
+<section class="glass-panel rounded-xl p-6 border border-[#BF40FF]/20 flex flex-row items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#BF40FF] text-3xl">toll</span>
+</div>
+<div>
+<p class="text-zinc-500 text-label-sm uppercase tracking-wider">เหรียญของฉัน</p>
+<p class="text-headline-md font-bold text-on-background">1,250 <span class="text-label-md font-normal text-zinc-400">Coins</span></p>
+</div>
+</div>
+<button class="px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-bold hover:scale-105 transition-transform neon-glow flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+    เติมเหรียญ
+  </button>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Recently Read & Favorites -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Recently Read -->
+<div>
+<div class="flex justify-between items-end mb-4 px-2">
+<h2 class="text-headline-md font-headline-md border-l-4 border-[#BF40FF] pl-4 uppercase tracking-tighter">อ่านล่าสุด</h2>
+<button class="text-primary font-label-md hover:underline">ดูทั้งหมด</button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="dramatic manga style illustration of a cyberpunk samurai standing under neon signs with heavy rain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnjVTeqgyBl9W6D3839GKwYGqY9Pv7J6GkqddK3p3M0NrV3ZLIN1LajK-lDn5Sau7C6VWDiEQ_Ba3dR7De2Fy-s8DEyg4KoKSleCu1QXk0fM1UTBgD5ckgDnvpprMViPrhUaqXpEJUk50y62AnlePOM9kpT97UHB7dSeWE2vbMZ6xf8j5AIOGnbViaPrUcvy5-MlQfY43xQ8Aex7cVaolRL6OXpPUZs855Ss7dAN64jpVlo9OijnsA2UrqZ1bE6Poc9ORXm8VHDjLN"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 75%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Neon Shadow IV</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 124 / 150</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="vibrant anime style art of a futuristic tech lab with holographic screens and cool blue and purple lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXly_oSwp6uqr2g4TULHq1qhcXvU7Sn_AoU0IFz5l8x2Cbo8T0dOsLJd6EdAYPugM9Hx0uxRIw0mWxxZFrBzEzJ8G4cdvYHHeLsuzwgtBten86iLFeDXNlS5jGOHrY1OT3ESR_BOJdUl58GHGaDWnrL4qRmifzLVr09Uu9MnkxBdL1sCga3DjcGAKUxPAhGvg57Xx4dChOj9lisC6-NVCqAbpmWYnD3HUEP2o743YHDpKAk5On7vzII2dmQJXRZrbekidIxeQzObSx"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 90%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Bio-Glitch Odyssey</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 42 / 45</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative rounded-lg overflow-hidden bg-surface-container-low border border-transparent hover:border-[#BF40FF]/50 transition-all duration-300">
+<div class="aspect-[3/4] relative">
+<img class="w-full h-full object-cover" data-alt="stylized manga illustration of a bustling Tokyo street at night with glowing lanterns and digital billboards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVWdN-gFceBxByfeRRMEbXMwVBUVs2E6mNTFvtJtYe0TQsHOW-45mbYenL7H9qCwb1GY9RCcD294HflteAoQ-Hh_xNHxRFQ2vteWXIHgakkfWu_JtWI7tuuOn-RVswte3ls9mzCnPbiykSyNwV3Y_Zvri7MXQt8TU0RYpplSKXnMqqK8ABIT3e1RcgtE6QsVAoqJht4cgfkhyDeyndzTwxANVUeE9oUkSqiYlOrM-mNwJ452fW3BODiKR3xVtH1N3ap62rfa4RmYQ7"/>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 30%;"></div>
+</div>
+</div>
+<div class="p-3">
+<h3 class="text-on-background font-bold truncate">Circuit City Blues</h3>
+<p class="text-zinc-500 text-label-sm">ตอนที่ 12 / 120</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Style Stats/Achievement -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="glass-panel p-6 rounded-xl border border-white/5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-background">ความคืบหน้าการอ่าน</h3>
+<span class="material-symbols-outlined text-[#BF40FF]">query_stats</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-label-sm text-zinc-400">
+<span>เป้าหมายเดือนนี้</span>
+<span>120/200 ตอน</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-[#BF40FF] progress-glow" style="width: 60%;"></div>
+</div>
+</div>
+<p class="text-label-sm text-zinc-500">คุณอ่านมากกว่า 85% ของนักอ่านในสัปดาห์นี้!</p>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-white/5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-on-background">เหรียญตราล่าสุด</h3>
+<span class="material-symbols-outlined text-[#BF40FF]">military_tech</span>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#BF40FF]">bolt</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined">nights_stay</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container border border-dashed border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-600">add</span>
+</div>
+</div>
+<p class="text-label-sm text-zinc-500">สะสมให้ครบ 12 อันเพื่อปลดล็อกธีม "Void Cyan"</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Settings & Community -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="glass-panel rounded-xl overflow-hidden border border-white/5">
+<div class="p-6 border-b border-white/5">
+<h3 class="text-headline-md font-headline-md uppercase tracking-tight">ตั้งค่าบัญชี</h3>
+</div>
+<div class="flex flex-col">
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">account_circle</span>
+<span class="flex-1 text-left">ข้อมูลส่วนตัว</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">notifications_active</span>
+<span class="flex-1 text-left">การแจ้งเตือน</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">account_balance_wallet</span>
+<span class="flex-1 text-left">สมาชิก Premium</span>
+<span class="text-primary text-label-sm font-bold">ใช้งานอยู่</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">palette</span>
+<span class="flex-1 text-left">ธีมและหน้าตาแอป</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 px-6 py-4 hover:bg-white/5 transition-colors text-on-surface">
+<span class="material-symbols-outlined text-[#BF40FF]">security</span>
+<span class="flex-1 text-left">ความปลอดภัย</span>
+<span class="material-symbols-outlined text-zinc-600">chevron_right</span>
+</button>
+<div class="p-6 mt-4">
+<button class="w-full py-3 rounded-lg border border-zinc-700 text-zinc-500 hover:bg-zinc-800 transition-colors font-bold uppercase text-label-md">
+    ออกจากระบบ
+</button>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary-container to-[#BF40FF] p-6 text-on-primary-container">
+<div class="relative z-10 space-y-4">
+<h4 class="font-headline-md font-bold leading-tight">พบปัญหาการใช้งาน?</h4>
+<p class="text-body-md opacity-90">ติดต่อทีมงานซัพพอร์ตได้ตลอด 24 ชม.</p>
+<button class="px-6 py-2 bg-[#0A0A0C] text-white rounded-full font-bold text-label-md">ติดต่อเรา</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-9xl opacity-20 rotate-12">support_agent</span>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-[#0A0A0C]/90 backdrop-blur-xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.8)]">
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">home_max</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Search</span>
+</a>
+<a class="flex flex-col items-center text-zinc-600 hover:text-purple-300 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">import_contacts</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Shelf</span>
+</a>
+<a class="flex flex-col items-center text-[#BF40FF] drop-shadow-[0_0_8px_rgba(191,64,255,0.6)] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_filled</span>
+<span class="font-space-grotesk text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>
+
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0A0A0C;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px -5px rgba(191, 64, 255, 0.6);
+        }
+        .neon-border {
+            border: 1px solid rgba(191, 64, 255, 0.3);
+        }
+        .cyber-gradient {
+            background: linear-gradient(135deg, #c960ff 0%, #9600d4 100%);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2a2a2c",
+                    "surface-variant": "#353437",
+                    "on-primary": "#500074",
+                    "inverse-primary": "#9600d4",
+                    "outline-variant": "#4f4254",
+                    "on-surface": "#e5e1e4",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e5e1e4",
+                    "inverse-on-surface": "#313032",
+                    "secondary-container": "#00eefc",
+                    "surface-container-lowest": "#0e0e10",
+                    "primary-fixed": "#f6d9ff",
+                    "on-tertiary-container": "#5b0018",
+                    "error-container": "#93000a",
+                    "surface-tint": "#e8b3ff",
+                    "on-tertiary-fixed": "#40000f",
+                    "surface-container-highest": "#353437",
+                    "on-secondary-container": "#00686f",
+                    "secondary-fixed": "#7df4ff",
+                    "on-secondary": "#00363a",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#39393b",
+                    "on-tertiary-fixed-variant": "#91002d",
+                    "primary-fixed-dim": "#e8b3ff",
+                    "on-surface-variant": "#d3c1d6",
+                    "surface-container": "#201f21",
+                    "tertiary-container": "#ff506e",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "tertiary-fixed-dim": "#ffb2b8",
+                    "tertiary": "#ffb2b8",
+                    "on-secondary-fixed": "#002022",
+                    "outline": "#9c8ba0",
+                    "on-tertiary": "#67001d",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#131315",
+                    "surface-container-low": "#1c1b1d",
+                    "surface": "#131315",
+                    "primary-container": "#c960ff",
+                    "background": "#131315",
+                    "on-primary-fixed-variant": "#7200a3",
+                    "secondary": "#d3fbff",
+                    "primary": "#e8b3ff",
+                    "on-background": "#e5e1e4",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "on-primary-fixed": "#310049",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-primary-container": "#460066"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "label-md": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"],
+                    "body-lg": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "label-sm": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface overflow-hidden">
+<!-- Background Manga Detail Page (Blurred/Overlayed) -->
+<main class="relative h-screen w-full overflow-hidden blur-sm brightness-[0.3]">
+<!-- Hero Image -->
+<div class="absolute top-0 left-0 w-full h-[530px] z-0">
+<img class="w-full h-full object-cover" data-alt="Cinematic dark manga illustration of a powerful warrior with glowing purple eyes and energy aura standing in a dark mystical realm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUm5K2oW2yQBfpi_eRuix7TLQen0n3NdASOk1UOvcHl1t4nAw_DwpakL4V6xsENzJK-PnxwQFzXueofs0onQun-bKlNqB1hZDVof-1SRB-b5zvrHyS518T696jubDMZoRDBsE2m8UJdXJs6ecJuZMktb-EbRyFK98-nc2NopludZOD0nMsbk6zegRKzZ3jQwSRhYHFZDixOcFcvJ1vjwGdmKJ2fHCGDB3ZHsN40HQUbOCVkHU6wVg14tn236xVL4xy6-tIR3ZMSw-c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/60 to-transparent"></div>
+</div>
+<!-- Content Shell -->
+<div class="relative z-10 p-6 pt-20">
+<div class="flex gap-6">
+<div class="w-1/3 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10">
+<img class="w-full h-full object-cover" data-alt="Manga cover art featuring a dark knight in futuristic armor with purple lightning effects on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh5uMunDDn5IlJ8eAtuxY6OzH-3rotygjyCrR6OC37SCliIb8Mpfu7fAQe-eYrYiYI04hPV96r8tIQo8k8scLuK2fsmXE_K6Hf0iZjXLIpa4IF3ysTjdvWrYPTWf25TnAZ7gTl6jf5cAy1-rWjhnkdYvjA_8OpqbB2x6DreBfFuAgi4CzHm9Rxerr7kQROOMNU_J8N5dlsDQSp-SwQydwJtJErsVrAmO0O-gyy3eVyzDztlF7anA4m3yQ4NvtJuSPKOlATmnbhTNez"/>
+</div>
+<div class="flex-1 space-y-4">
+<h1 class="font-headline-lg text-headline-lg text-white">Solo Leveling</h1>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-fuchsia-500/20 border border-fuchsia-500/30 text-fuchsia-400 rounded-full text-label-sm font-label-sm">Action</span>
+<span class="px-3 py-1 bg-fuchsia-500/20 border border-fuchsia-500/30 text-fuchsia-400 rounded-full text-label-sm font-label-sm">Fantasy</span>
+</div>
+<p class="text-body-md text-surface-variant line-clamp-3">In a world where hunters, humans who possess magical abilities, must battle deadly monsters to protect the human race...</p>
+</div>
+</div>
+<!-- Chapter List -->
+<div class="mt-12 space-y-3">
+<div class="p-4 bg-surface-container rounded-xl flex items-center justify-between">
+<span class="font-label-md text-label-md">Chapter 181: The Final Battle Part 2</span>
+<span class="material-symbols-outlined text-fuchsia-500">lock</span>
+</div>
+<div class="p-4 bg-surface-container rounded-xl flex items-center justify-between border-2 border-fuchsia-500/50">
+<span class="font-label-md text-label-md">Chapter 180: การเผชิญหน้าครั้งสุดท้าย</span>
+<span class="material-symbols-outlined text-fuchsia-500">lock</span>
+</div>
+<div class="p-4 bg-surface-container rounded-xl flex items-center justify-between opacity-50">
+<span class="font-label-md text-label-md">Chapter 179: Dark Shadows</span>
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-zinc-950/60 backdrop-blur-md">
+<!-- Dialog Box -->
+<div class="w-full max-w-sm glass-panel neon-border rounded-[2rem] p-8 flex flex-col items-center animate-in fade-in zoom-in duration-300">
+<!-- Coin Icon with Pulse -->
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-fuchsia-500/30 blur-2xl rounded-full"></div>
+<div class="relative w-20 h-20 cyber-gradient rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(191,64,255,0.4)]">
+<span class="material-symbols-outlined text-white text-5xl" data-weight="fill">monetization_on</span>
+</div>
+</div>
+<!-- Title -->
+<h2 class="font-headline-md text-headline-md text-white mb-2 text-center">ปลดล็อกตอนใหม่</h2>
+<!-- Chapter Info -->
+<div class="px-4 py-2 bg-white/5 rounded-full mb-8 border border-white/10">
+<p class="font-label-md text-label-md text-on-surface-variant text-center">Chapter 180: การเผชิญหน้าครั้งสุดท้าย</p>
+</div>
+<!-- Pricing Info -->
+<div class="flex flex-col items-center gap-1 mb-8">
+<div class="flex items-center gap-2">
+<span class="text-[40px] font-black text-white tracking-tighter">50</span>
+<span class="text-fuchsia-400 font-bold text-xl uppercase tracking-widest">Coins</span>
+</div>
+<p class="font-label-sm text-label-sm text-zinc-500">เหรียญของคุณ: 1,250 Coins</p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full space-y-4">
+<button class="w-full py-4 rounded-2xl cyber-gradient text-white font-label-md text-label-md uppercase tracking-wider neon-glow active:scale-95 transition-all">
+                    ยืนยันการปลดล็อก
+                </button>
+<button class="w-full py-4 rounded-2xl bg-white/5 text-zinc-400 font-label-md text-label-md uppercase tracking-wider hover:bg-white/10 active:scale-95 transition-all">
+                    ยกเลิก
+                </button>
+</div>
+</div>
+</div>
+<!-- Navigation Components (From JSON Mapping) -->
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-zinc-950/70 backdrop-blur-xl border-b border-fuchsia-500/20 shadow-[0_0_15px_rgba(191,64,255,0.1)]">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-fuchsia-500/30">
+<img class="w-full h-full object-cover" data-alt="Minimalist profile avatar of a person in high-tech streetwear against a neon background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARZD0WIfWlIo0NcsIH6QC0OkJ0SKvn0TAQu3-o3lEjuL5zPx2x4CGGTVdshZXO7PNx6kliHRHNJnJKC0m0rfRCzYNxaOwOgqcO1IMmISHv6jTuxoROq9PvAYPo-YNAvZ9drQDNC6NuUZrACgm90vFvByy4V5xNCAYDFm6uOHWeuVKiIOq8RTM-dtQDP9f3kQbsOsjc4HMolkk7Q8y5nCx7WYZl-EnQ_oS0g4DSrIZy4hOCotql4SssDXneQ8uOwSqB5TxikQg9AjbQ"/>
+</div>
+<div class="text-2xl font-black text-fuchsia-500 italic uppercase tracking-widest font-['Space_Grotesk']">MangaPulse</div>
+<button class="text-fuchsia-500 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-zinc-950/80 backdrop-blur-2xl border-t border-fuchsia-500/20 rounded-t-2xl shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 rounded-xl transition-all p-2">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-medium">หน้าแรก</span>
+</div>
+<div class="flex flex-col items-center justify-center text-fuchsia-500 drop-shadow-[0_0_8px_rgba(191,64,255,0.6)] hover:bg-white/5 rounded-xl transition-all p-2 scale-110">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-medium">ห้องสมุด</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 rounded-xl transition-all p-2">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-medium">สำรวจ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 rounded-xl transition-all p-2">
+<span class="material-symbols-outlined" data-icon="monetization_on">monetization_on</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-medium">เหรียญ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-500 hover:bg-white/5 rounded-xl transition-all p-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase font-medium">โปรไฟล์</span>
+</div>
+</nav>
+</body></html>
